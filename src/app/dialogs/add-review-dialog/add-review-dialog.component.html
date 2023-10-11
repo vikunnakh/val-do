@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>შეფასების {{ review ? 'რედაქტირება' : 'დამატება' }}</h1>
+<mat-dialog-content>
+    <p>გთხოვთ დააფიქსიროთ თქვენი აზრი პროექტის შესახებ</p>
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>შეფასება</mat-label>
+            <mat-select formControlName="star">
+                <mat-option *ngFor="let star of stars; let i = index" [value]="star.length / 2">{{star}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+			<mat-label>თქვენი კომენტარი</mat-label>
+			<textarea matInput formControlName="description"></textarea>
+		</mat-form-field>
+    </form>
+    <mat-progress-bar *ngIf="form.disabled" mode="indeterminate"></mat-progress-bar>
+</mat-dialog-content>
+<mat-divider *ngIf="!form.disabled"></mat-divider>
+<mat-dialog-actions>
+	<button (click)="submit()" [disabled]="form.invalid || form.disabled" mat-raised-button color="primary">
+		{{ review ? "რედაქტირება" : "დამატება" }}
+	</button>
+	<button (click)="close()" [disabled]="form.disabled" mat-raised-button color="standard">გაუქმება</button>

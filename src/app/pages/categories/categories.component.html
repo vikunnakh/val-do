@@ -1,0 +1,8 @@
+<div fitToScreen style="display: flow-root">
+	<div class="container" style="margin-top: 30px">
+		<app-search-bar></app-search-bar>
+	</div>
+	<section class="d-grid container" *ngIf="categories$ | async as categories">
+		<app-category-card *ngFor="let category of categories" [data]="category"></app-category-card>
+	</section>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+	<h2>ჩემი ფავორიტები</h2>
+	<ng-container *ngIf="$favorites | async as favorites">
+		<div class="d-grid">
+			<app-lesson-card *ngFor="let fav of favorites" [data]="fav"></app-lesson-card>
+		</div>
+		<div style="text-align: center" *ngIf="!favorites.length">ფავორიტები არ მოიძებნა... 🙁</div>
+	</ng-container>
+</div>

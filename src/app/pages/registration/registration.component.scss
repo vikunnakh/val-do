@@ -1,0 +1,48 @@
+@import '../../../styles/var/breakpoints' ;
+
+
+
+
+.form-container {
+	margin: 15px auto;
+	h1 {
+		margin-top: 0;
+	}
+}
+.form-grid {
+	display: grid;
+	@media screen and (min-width: 768px) {
+		gap: 0 15px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+.save {
+	margin-bottom: 15px;
+	font-size: 14px;
+	input {
+		width: 20px;
+		height: 20px;
+		margin-left: 0;
+		margin-right: 5px;
+	}
+	a {
+		color: darkblue;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.register {
+	margin-top: 15px;
+	font-size: 14px;
+	a {
+		color: darkblue;
+		text-decoration: none;
+		margin-left: 5px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<div class="container d-flex" fitToScreen>
+	<mat-card [formGroup]="form">
+		<h1>ავტორიზაცია</h1>
+		<p>სისტემაში შესასვლელად გთხოვთ შეიყვანოთ ქვემოთ ინფორმაცია</p>
+		<mat-form-field appearance="outline">
+			<mat-label for="email">ელ-ფოსტა</mat-label>
+			<input matInput id="email" formControlName="email" class="form-control" type="email" />
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label for="password">პაროლი</mat-label>
+			<input matInput id="password" formControlName="password" class="form-control" type="password" />
+		</mat-form-field>
+		<div *ngIf="error" class="form-group">
+			<div class="alert error">მომხმარებელი ან პაროლი არასწორია</div>
+		</div>
+		<div class="save d-flex justify-content-between align-items-center">
+			<div class="d-flex align-items-center">
+				<input type="checkbox" id="save" />
+				<label for="save">დამახსოვრება</label>
+			</div>
+			<a routerLink="/reset">პაროლის აღდგენა</a>
+		</div>
+		<button mat-raised-button color="primary" [disabled]="form.invalid" (click)="login()" class="w-100">შესვლა</button>
+		<div class="d-flex justify-content-center align-items-center register">
+			არ გაქვს ანგარიში? <a routerLink="/registration">დარეგისტრირდი</a>
+		</div>
+	</mat-card>
+</div>

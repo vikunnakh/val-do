@@ -1,0 +1,58 @@
+<div class="container">
+	<ng-container *ngIf="$userData | async as data">
+		<div class="profile-container">
+			<div>
+				<span class="no-avatar" *ngIf="!prev && data.user.profileImage === ''">👤</span>
+				<img
+					*ngIf="prev || data.user.profileImage !== ''"
+					width="100%"
+					src="{{ prev || baseUrl + '/' + data.user.profileImage }}"
+					alt="profile-image" />
+				<div class="btn-container">
+					<button (click)="file.click()" mat-raised-button color="primary">
+						<span class="text-truncate">{{ data.user.profileImage !== "" ? "შეცვლა" : "ფოტოს ატვირთვა" }}</span>
+					</button>
+					<button *ngIf="data.user.profileImage !== ''" (click)="delete(data.user._id)" mat-stroked-button color="warn">
+						წაშლა
+					</button>
+				</div>
+				<input
+					#file
+					style="display: none"
+					accept="image/png,image/gif,image/jpeg"
+					(change)="fileSelect($event)"
+					type="file" />
+			</div>
+			<mat-list role="list">
+				<mat-list-item role="listitem">სახელი: {{ data.user.firstName }}</mat-list-item>
+				<mat-divider></mat-divider>
+				<mat-list-item role="listitem">გვარი: {{ data.user.lastName }}</mat-list-item>
+				<mat-divider></mat-divider>
+				<mat-list-item role="listitem">ტელეფონი: {{ data.user.phone }}</mat-list-item>
+				<mat-divider></mat-divider>
+				<mat-list-item role="listitem">ელფოსტა: {{ data.user.email }}</mat-list-item>
+			</mat-list>
+		</div>
+		<ng-template #addResume>
+			<mat-card>
+				<h3>რეზიუმეს შექმნა</h3>
+				<p>შექმენი შენი უფასო რეზიუმე val-do.com-ზე</p>
+				<button (click)="addCv()" mat-raised-button color="primary">რეზიუმეს დამატება</button>
+			</mat-card>
+		</ng-template>
+		<!-- ჩემი რეზიუმე -->
+		<ng-container *ngIf="data.cv; else addResume">
+			<h1>ჩემი რეზიუმე</h1>
+			<mat-card>
+				<h2>{{ data.cv.role }}</h2>
+				<p>{{ data.cv.about }}</p>
+				<mat-divider></mat-divider>
+				<mat-card-actions>
+					<a mat-raised-button routerLink="/resume/{{ data.cv._id }}">დეტალურად ნახვა</a>
+					<button (click)="edit(data.cv._id)" mat-raised-button color="primary">რედაქტირება</button>
+					<button (click)="deleteCv()" mat-button color="warn">წაშლა</button>
+				</mat-card-actions>
+			</mat-card>
+		</ng-container>
+	</ng-container>
+</div>

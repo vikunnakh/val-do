@@ -1,0 +1,15 @@
+<a routerLink="/challenge/{{ challenge._id }}">
+	<mat-card>
+		<img mat-card-image class="cover" src="{{ baseUrl }}/{{ challenge.img }}" [alt]="challenge.title" />
+		<div class="card-body">
+			<div style="margin-bottom: 15px">
+				<mat-chip color="primary" selected>{{ challenge.level }}</mat-chip>
+			</div>
+			<mat-chip-list class="d-flex tags-container">
+				<mat-chip *ngFor="let tag of challenge.tags">{{ tag.title }}</mat-chip>
+			</mat-chip-list>
+			<h3>{{ challenge.title }}</h3>
+			<p>{{ challenge.smallDescr }}</p>
+		</div>
+	</mat-card>
+</a>

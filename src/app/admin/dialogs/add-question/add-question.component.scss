@@ -1,0 +1,14 @@
+.question {
+	display: grid;
+	grid-template-columns: minmax(0, 30px) minmax(0, 1fr) minmax(0, auto);
+	div {
+		display: grid;
+		margin: auto;
+		cursor: pointer;
+		color: red;
+	}
+	input[type="radio"] {
+		margin: 0;
+		cursor: pointer;
+	}
+}

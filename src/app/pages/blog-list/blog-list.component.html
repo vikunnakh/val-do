@@ -1,0 +1,21 @@
+<div class="container" fitToScreen>
+	<h1>Val Do-ს ბლოგი</h1>
+	<div class="d-grid">
+		<ng-container *ngIf="blogs$ | async as blogs">
+			<a routerLink="/blog/blog-detail/{{ blog._id }}" *ngFor="let blog of blogs">
+				<mat-card>
+					<!-- <img mat-card-image src="{{ baseUrl }}/{{ blog.image }}" [alt]="blog.title" /> -->
+					<img mat-card-image src="" [alt]="blog.title" />
+
+					<mat-card-title>
+						<h6>{{ blog.title }}</h6>
+					</mat-card-title>
+					<mat-card-content>
+						<div id="blog-card-text" [innerHTML]="blog.description"></div>
+					</mat-card-content>
+				</mat-card>
+			</a>
+		</ng-container>
+	</div>
+</div>
+

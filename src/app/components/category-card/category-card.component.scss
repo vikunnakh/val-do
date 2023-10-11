@@ -1,0 +1,28 @@
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h3 {
+	max-height: 51px;
+	font-size: 18px;
+	overflow: hidden;
+	margin-block: 10px;
+}
+
+.descr {
+	height: 46px;
+	margin-top: 0;
+	overflow: hidden;
+}
+
+p {
+	height: 46px;
+	overflow: hidden;
+}
+
+img {
+	display: block;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+}

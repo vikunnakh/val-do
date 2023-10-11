@@ -1,0 +1,16 @@
+<div class="container d-grid">
+	<ng-container *ngFor="let review of reviews$ | async">
+		<div class="review-card">
+			<app-review-card (update)="reInit($event)" [review]="review"></app-review-card>
+			<div class="action-buttons">
+				<button
+					(click)="publish(review._id, review.isPublished)"
+					mat-raised-button
+					[color]="review.isPublished ? 'basic' : 'primary'">
+					{{ review.isPublished ? "დამალვა" : "გამოჩენა" }}
+				</button>
+				<button (click)="delete(review._id)" mat-raised-button color="warn">წაშლა</button>
+			</div>
+		</div>
+	</ng-container>
+</div>

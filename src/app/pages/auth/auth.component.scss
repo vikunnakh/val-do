@@ -1,0 +1,61 @@
+@import "../../../styles/var/breakpoints";
+
+
+mat-form-field {
+	width: 100%;
+}
+
+.container {
+	align-items: center;
+	justify-content: center;
+}
+
+mat-card {
+	width: 320px;
+	margin-block: 15px;
+	margin-inline: auto;
+	padding: 16px;
+	h1 {
+		margin-top: 0;
+		font-size: 35px;
+		font-weight: 600;
+	}
+}
+
+button {
+	margin-bottom: 15px;
+}
+
+.save {
+	margin-bottom: 15px;
+	font-size: 14px;
+	input {
+		width: 20px;
+		height: 20px;
+		margin-left: 0;
+		margin-right: 5px;
+	}
+	a {
+		color: darkblue;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.btn-primary {
+	margin-bottom: 15px;
+}
+
+.register {
+	font-size: 14px;
+	a {
+		color: darkblue;
+		text-decoration: none;
+		margin-left: 5px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

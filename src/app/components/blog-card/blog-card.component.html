@@ -1,0 +1,7 @@
+<mat-card>
+    <!-- <img mat-card-image src="{{ baseUrl }}/{{ blog.image }}" [alt]="blog.title"> -->
+    <img mat-card-image src="" [alt]="blog.title">
+
+    <h3>{{ blog.title }}</h3>
+    <div [innerHTML]="blog.description.substring(0, 75) + '...' "></div>
+</mat-card>

@@ -1,0 +1,16 @@
+.alert {
+	font-size: 14px;
+	border-width: 2px;
+	padding: 5px 10px;
+	border-style: solid;
+	&.error {
+		color: red;
+		border-color: red;
+		background-color: rgba(255, 0, 0, 0.1);
+	}
+	&.success {
+		color: green;
+		border-color: green;
+		background-color: rgba(0, 128, 0, 0.1);
+	}
+}

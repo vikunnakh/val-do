@@ -1,0 +1,39 @@
+<div class="container">
+	<ng-container *ngIf="quiz$ | async as quiz">
+		<div class="main-question-block">
+			<h1>{{ quiz.title }}</h1>
+			<div id="edited" [innerHTML]="quiz.descr"></div>
+			<mat-divider></mat-divider>
+			<!-- admin buttons -->
+			<div *ngIf="user.isAdmin">
+				<div style="display: flex; gap: 0 15px; margin-block: 15px">
+					<a routerLink="/admin/quiz" [queryParams]="{ id: quiz._id }" mat-raised-button color="primary">
+						რედაქტირება
+					</a>
+					<button (click)="delete()" mat-raised-button color="warn">წაშლა</button>
+				</div>
+				<mat-divider></mat-divider>
+			</div>
+		</div>
+		<!-- questions -->
+		<div *ngFor="let question of quiz.questions; index as i" class="question-block">
+			<div [innerHTML]="question.question"></div>
+			<ul>
+				<li *ngFor="let data of question.answers; index as j">
+					<mat-radio-button (change)="checkAnswers(i, j)" [value]="data.isCorrect" name="radio-{{ i }}">
+						<div
+							*ngIf="isChecked"
+							[ngStyle]="{ color: data.isCorrect ? 'green' : 'red' }"
+							[innerHTML]="data.answer"></div>
+						<div *ngIf="!isChecked" [innerHTML]="data.answer"></div>
+					</mat-radio-button>
+					<mat-divider *ngIf="j != question.answers.length - 1" style="margin-block: 15px"></mat-divider>
+				</li>
+			</ul>
+			<mat-divider></mat-divider>
+		</div>
+		<div style="text-align: center; margin-bottom: 15px">
+			<button mat-raised-button color="primary" (click)="confirmation()">ქვიზის დასრულება</button>
+		</div>
+	</ng-container>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+	<div [formGroup]="form" class="form-container p-relative" *ngIf="course">
+		<h1>კურსის რედაქტირება</h1>
+		<p>
+			კურის დასარედაქტირებლად გთხოვთ შეავსოთ ქვემოთ მოცემული სავალდებულო ველები, რომლებიც მონიშნულია
+			<strong>*</strong>-ით
+		</p>
+		<div class="form-group">
+			<label for="">თეგები</label>
+			<ng-select
+				[items]="tags$ | async"
+				[multiple]="true"
+				[closeOnSelect]="false"
+				bindLabel="title"
+				formControlName="tags"
+				placeholder="თეგების არჩევა">
+			</ng-select>
+		</div>
+		<div class="form-group">
+			<label for="">კატეგორია</label>
+			<ng-select
+				[items]="categories$ | async"
+				bindValue="_id"
+				bindLabel="title"
+				formControlName="category"
+				placeholder="თეგების არჩევა">
+			</ng-select>
+		</div>
+		<div class="form-group">
+			<label for="title">სათაური *</label>
+			<input id="title" type="text" formControlName="title" />
+		</div>
+		<div class="form-group">
+			<label for="title">აღწერა *</label>
+			<editor
+				formControlName="descr">
+			</editor>
+		</div>
+		<div class="form-group">
+			<label for="iframe">iframe</label>
+			<input id="iframe" type="text" formControlName="iframe" />
+		</div>
+		<div class="form-group">
+			<label for="youtubeLink">Youtube-ის ბმული</label>
+			<input id="youtubeLink" type="text" formControlName="youtubeLink" />
+		</div>
+		<div class="form-group">
+			<label for="telegramLink">Telegram-ის ბმული</label>
+			<input id="telegramLink" type="text" formControlName="telegramLink" placeholder="telegram-ის ბმული" />
+		</div>
+		<div class="form-group">
+			<label for="repo">Github-ის ბმული</label>
+			<input id="repo" type="text" formControlName="repoLink" placeholder="github-ის ბმული" />
+		</div>
+		<div class="form-group">
+			<img class="cursor-pointer" (click)="file.click()" src="{{ baseUrl }}/{{ course.img }}" />
+		</div>
+		<input #file type="file" (change)="onFileSelect($event)" style="display: none" />
+		<button [disabled]="form.invalid" (click)="editCourse()" class="btn btn-primary w-100">რედაქტირება</button>
+	</div>
+</div>

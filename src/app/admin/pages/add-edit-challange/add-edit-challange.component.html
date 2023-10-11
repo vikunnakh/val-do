@@ -1,0 +1,43 @@
+<div class="container" [formGroup]="form">
+	<h1>გამოწვევის დამატება</h1>
+	<p>გამოწვევის დასამატებლად გთხოვთ შეავსოთ ქვემოთ მოცემული სავალდებულო ველები, რომლებიც მონიშნულია *-ით</p>
+	<div class="form-group">
+		<label for="title">სათაური *</label>
+		<input type="text" id="title" formControlName="title" />
+	</div>
+	<div class="form-group">
+		<label for="tags">თეგები *</label>
+		<ng-select
+			[items]="tags$ | async"
+			[multiple]="true"
+			[closeOnSelect]="false"
+			bindLabel="title"
+			formControlName="tags"
+			placeholder="თეგების არჩევა">
+		</ng-select>
+	</div>
+	<div class="form-group">
+		<label for="level">დონე *</label>
+		<input type="text" id="level" formControlName="level" />
+	</div>
+	<div class="form-group">
+		<label for="smallDescr">მოკლე აღწერა *</label>
+		<input type="text" id="smallDescr" formControlName="smallDescr" />
+	</div>
+	<div class="form-group">
+		<label for="descr">აღწერა</label>
+		<input type="text" id="smallDescr" formControlName="descr" />
+
+	</div>
+	<div class="form-group">
+		<label for="img">აღწერა</label>
+		<input id="img" type="file" (change)="onFileSelect($event)" />
+	</div>
+	<button
+		style="width: 100%; margin-bottom: 15px"
+		[disabled]="!edit ? form.invalid && !selectedImage : form.invalid"
+		(click)="submit()"
+		class="btn btn-primary">
+		{{ edit ? "რედაქტირება" : "დამატება" }}
+	</button>
+</div>

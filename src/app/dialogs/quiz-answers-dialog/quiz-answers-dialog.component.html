@@ -1,0 +1,11 @@
+<h3 mat-dialog-title>შეტყობინება</h3>
+<mat-dialog-content>
+    <div>თქვენ გაეცით {{ data.percentage }} კითხვიდან {{ data.correctAnswer }}-ს სწორი პასუხი</div>
+    <p>
+        თქვენი პროგრესია <strong>{{ data.percentage }}</strong>
+    </p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+	<button mat-raised-button color="primary" (click)="close()">დასრულება</button>
+</mat-dialog-actions>

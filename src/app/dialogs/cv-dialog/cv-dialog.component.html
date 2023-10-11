@@ -1,0 +1,171 @@
+<h1 matDialogTitle>რეზიუმეს {{ id ? "რედაქტირება" : "დამატება" }}</h1>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+	<div style="padding-top: 15px" [formGroup]="form">
+		<!-- role -->
+		<mat-form-field style="width: 100%" appearance="outline">
+			<mat-label>პროფესიის დასახელება</mat-label>
+			<input formControlName="role" matInput placeholder="მაგ: Frontend developer" />
+		</mat-form-field>
+		<!-- about -->
+		<mat-form-field style="width: 100%" appearance="outline">
+			<mat-label>ჩემს შესახებ</mat-label>
+			<textarea
+				formControlName="about"
+				matInput
+				rows="5"
+				placeholder="ჩაწერეთ თქვენს შესახებ სამოტივაციო შეტყობინება"></textarea>
+		</mat-form-field>
+		<!-- location -->
+		<mat-form-field style="width: 100%" appearance="outline">
+			<mat-label>ქალაქი</mat-label>
+			<input formControlName="location" matInput placeholder="მაგ: თბილისი" />
+		</mat-form-field>
+		<!-- address -->
+		<mat-form-field style="width: 100%" appearance="outline">
+			<mat-label>მისამართი</mat-label>
+			<input formControlName="address" matInput placeholder="მაგ: ალ. ყაზბეგის გამზირი #1" />
+		</mat-form-field>
+		<div>
+			<mat-divider></mat-divider>
+		</div>
+
+		<!-- education -->
+		<div formArrayName="education">
+			<h3>განათლება / სერტიფიკატი</h3>
+			<ng-container *ngFor="let edu of education.controls; let i = index">
+				<div [formGroupName]="i">
+					<!-- title -->
+					<mat-form-field style="width: 100%" appearance="outline">
+						<mat-label>დასახელება</mat-label>
+						<input formControlName="title" matInput placeholder="მაგ: უნივერსიტეტის/სერტიფიკატის დასახელება" />
+					</mat-form-field>
+					<!-- descr -->
+					<mat-form-field style="width: 100%" appearance="outline">
+						<mat-label>აღწერა</mat-label>
+						<textarea
+							formControlName="descr"
+							rows="5"
+							matInput
+							placeholder="მოკლედ მოყევით რა გამოცდილება მიიღეთ სწავლის პროცესში"></textarea>
+					</mat-form-field>
+					<!-- start and end date -->
+					<div class="date-row">
+						<!-- start -->
+						<mat-form-field style="width: 100%" appearance="outline">
+							<mat-label>დაწყების თარიღი</mat-label>
+							<input
+								(click)="start.open()"
+								[matDatepicker]="start"
+								formControlName="startDate"
+								matInput
+								placeholder="როდის დაიწყეთ მუშაობა?"
+								readonly />
+							<mat-datepicker #start></mat-datepicker>
+						</mat-form-field>
+						<!-- end -->
+						<mat-form-field style="width: 100%" appearance="outline">
+							<mat-label>დასრულების თარიღი</mat-label>
+							<input
+								(click)="end.open()"
+								[matDatepicker]="end"
+								formControlName="endDate"
+								matInput
+								placeholder="როდის დაასრულეთ მუშაობა?"
+								readonly />
+							<mat-datepicker #end></mat-datepicker>
+						</mat-form-field>
+					</div>
+					<button *ngIf="i > 0" (click)="removeNewEducation(i)" mat-button color="warn">წაშლა</button>
+				</div>
+			</ng-container>
+			<button (click)="addNewEducation()" mat-raised-button color="primary">
+				ახალი განათლება/სერტიფიკატის დამატება
+			</button>
+		</div>
+
+		<!-- experience -->
+		<div formArrayName="experience">
+			<h3>გამოცდილება</h3>
+			<ng-container *ngFor="let experience of experience.controls; let i = index">
+				<div [formGroupName]="i">
+					<!-- title -->
+					<mat-form-field style="width: 100%" appearance="outline">
+						<mat-label>დასახელება</mat-label>
+						<input formControlName="title" matInput placeholder="მაგ: კომპანიის დასახელება სადაც მუშაობდით" />
+					</mat-form-field>
+					<!-- descr -->
+					<mat-form-field style="width: 100%" appearance="outline">
+						<mat-label>აღწერა</mat-label>
+						<textarea
+							formControlName="descr"
+							rows="5"
+							matInput
+							placeholder="რა იყო თქვენი როლი კომპანიაში და რა სამუშაოს ასრულებდით?"></textarea>
+					</mat-form-field>
+					<!-- start and end date -->
+					<div class="date-row">
+						<!-- start -->
+						<mat-form-field style="width: 100%" appearance="outline">
+							<mat-label>დაწყების თარიღი</mat-label>
+							<input
+								(click)="start.open()"
+								[matDatepicker]="start"
+								formControlName="startDate"
+								matInput
+								placeholder="როდის დაიწყეთ მუშაობა?"
+								readonly />
+							<mat-datepicker #start></mat-datepicker>
+						</mat-form-field>
+						<!-- end -->
+						<mat-form-field style="width: 100%" appearance="outline">
+							<mat-label>დასრულების თარიღი</mat-label>
+							<input
+								(click)="end.open()"
+								[matDatepicker]="end"
+								formControlName="endDate"
+								matInput
+								placeholder="როდის დაასრულეთ მუშაობა?"
+								readonly />
+							<mat-datepicker #end></mat-datepicker>
+						</mat-form-field>
+					</div>
+					<button *ngIf="i > 0" (click)="removeNewExperience(i)" mat-button color="warn">წაშლა</button>
+				</div>
+			</ng-container>
+			<button (click)="addNewExperience()" mat-raised-button color="primary">ახალი გამოცდილების დამატება</button>
+		</div>
+
+		<div style="padding-block: 15px"></div>
+		<mat-divider></mat-divider>
+		<!-- უნარები -->
+		<div style="padding-block: 15px">
+			<h3>უნარები</h3>
+			<ng-select
+				formControlName="skills"
+				[items]="tags$ | async"
+				bindLabel="title"
+				[multiple]="true"
+				[closeOnSelect]="false"
+				placeholder="უნარების არჩევა"></ng-select>
+		</div>
+		<mat-divider></mat-divider>
+		<!-- უნარები -->
+		<div style="padding-block: 15px">
+			<h3>სასაუბრო ენები</h3>
+			<ng-select
+				formControlName="languages"
+				[items]="languages"
+				bindLabel="title"
+				[multiple]="true"
+				[closeOnSelect]="false"
+				placeholder="უნარების არჩევა"></ng-select>
+		</div>
+	</div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+	<button [disabled]="form.invalid" (click)="submit()" mat-raised-button color="primary">
+		რეზიუმეს {{ id ? "რედაქტირება" : "დამატება" }}
+	</button>
+</mat-dialog-actions>

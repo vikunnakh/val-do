@@ -1,0 +1,135 @@
+@import "../../../styles/var/breakpoints";
+
+.container {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	@media screen and (min-width: $mobile) {
+		gap: 0 15px;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		padding-block: 30px;
+	}
+	.other-corses {
+		& > div {
+			position: sticky;
+			top: 15px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			@media screen and (min-width: 768px) {
+				max-height: calc(100vh - 15px);
+			}
+		}
+		a {
+			padding: 0;
+			margin-bottom: 15px;
+			display: grid;
+			grid-template-columns: minmax(0, 100px) minmax(0, auto);
+			gap: 0 15px;
+			font-size: 14px;
+			img {
+				background-color: rgb(228, 228, 228);
+				color: transparent;
+				width: 100px;
+				aspect-ratio: 16 / 9;
+			}
+			&.active {
+				font-weight: bold;
+			}
+		}
+	}
+	.iframe-container {
+		margin: 0 -15px;
+		@media screen and (min-width: $mobile) {
+			margin: initial;
+		}
+		iframe {
+			display: block;
+		}
+	}
+	a {
+		color: dodgerblue;
+		text-decoration: none;
+		padding-block: 5px;
+		&:hover {
+			text-decoration: underline;
+		}
+		img {
+			margin-right: 5px;
+		}
+	}
+	p {
+		margin: 0;
+		white-space: pre-wrap;
+	}
+	.tags {
+		a {
+			font-family: "Courier New", monospace;
+		}
+	}
+
+	.comments {
+		margin-bottom: 15px;
+		button {
+			margin-top: 15px;
+		}
+		h6 {
+			margin: 0;
+			font-size: 16px;
+		}
+		.date {
+			font-size: 12px;
+			color: #828282;
+		}
+		.comment {
+			border-bottom: 1px solid #ccc;
+			padding-block: 15px;
+		}
+	}
+}
+
+::ng-deep {
+	#edited {
+		--border-color: #ccc;
+		--black: black;
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border: 0;
+			td {
+				padding: 10px 15px;
+				border-color: var(--border-color);
+			}
+			td {
+				&:first-child {
+					min-width: initial;
+					@media screen and (min-width: $laptop) {
+						min-width: 300px;
+					}
+					a {
+						font-weight: bold;
+						text-decoration: none;
+						color: dodgerblue;
+						display: block;
+						font-family: var(--font);
+					}
+				}
+			}
+			tr {
+				&:first-child {
+					background-color: var(--black);
+					* {
+						font-weight: bold;
+						color: white;
+					}
+					td {
+						border-color: var(--black);
+					}
+				}
+			}
+		}
+		iframe {
+			border: 0;
+			width: 100%;
+			aspect-ratio: 16/9;
+		}
+	}
+}

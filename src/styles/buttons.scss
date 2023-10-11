@@ -1,0 +1,36 @@
+.btn {
+	height: 40px;
+	display: flex;
+	text-decoration: none;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 700;
+	border: 0;
+	padding-inline: 15px;
+	/* sizes */
+	&.btn-sm {
+		height: 30px;
+		font-size: 12px;
+	}
+	/*  */
+	&.btn-primary {
+		background-color: black;
+		color: white;
+	}
+	&.btn-outline-primary {
+		background-color: white;
+		border: 2px solid black;
+		color: black;
+	}
+	&.btn-outline-danger {
+		background-color: white;
+		border: 2px solid red;
+		color: red;
+	}
+	&:disabled {
+		opacity: 0.5;
+		cursor: default;
+	}
+}

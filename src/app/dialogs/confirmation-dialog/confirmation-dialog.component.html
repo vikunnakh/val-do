@@ -1,0 +1,10 @@
+<h2>შეტყობინება</h2>
+<mat-divider style="margin-block: 15px"></mat-divider>
+<mat-dialog-content>
+	<p>{{ data.descr }}</p>
+</mat-dialog-content>
+<mat-divider style="margin-block: 15px"></mat-divider>
+<div class="d-flex">
+	<button mat-raised-button color="primary" (click)="close(true)">დადასტურება</button>
+	<button mat-button color="warn" (click)="close(false)">გაუქმება</button>
+</div>

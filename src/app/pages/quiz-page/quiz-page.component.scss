@@ -1,0 +1,26 @@
+.question-block,
+.main-question-block {
+	margin-bottom: 15px;
+}
+
+ul {
+	list-style: none;
+}
+
+::ng-deep {
+	app-quiz-page {
+		a {
+			color: dodgerblue;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		span {
+			white-space: initial;
+		}
+		p {
+			margin: 0;
+		}
+	}
+}

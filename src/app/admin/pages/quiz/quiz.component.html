@@ -1,0 +1,48 @@
+<div class="container" [formGroup]="form">
+	<h1>ქვიზის დამატება</h1>
+	<p>ქვიზის დასამატებლად გთხოვთ შეავსოთ ქვემოთ მითითებული ველები</p>
+
+	<!-- main title and descriptions -->
+	<mat-form-field style="width: 100%" appearance="outline">
+		<mat-label>სათაური</mat-label>
+		<input matInput formControlName="title" type="text" />
+	</mat-form-field>
+
+	<mat-form-field style="width: 100%" appearance="outline">
+		<mat-label>მოკლე აღწერა</mat-label>
+		<input matInput formControlName="smallDescr" type="text" />
+	</mat-form-field>
+
+	<div class="form-group">
+		<label for="descr">სრული აღწერა აღწერა</label>
+		<input type="text" formControlName="descr">
+	</div>
+
+	<!-- questions block -->
+	<div *ngFor="let question of questions; index as i" class="question-block">
+		<!-- question -->
+		<div [innerHTML]="question.question"></div>
+		<!-- answers -->
+		<ol>
+			<li *ngFor="let answer of question.answers">
+				<div [ngStyle]="{ color: answer.isCorrect ? 'green' : 'red' }" [innerHTML]="answer.answer"></div>
+			</li>
+		</ol>
+		<!-- action buttons -->
+		<div class="action-buttons">
+			<button (click)="edit(i, question)" mat-raised-button color="primary">რედაქტირება</button>
+			<button (click)="deleteQuestion(i)" mat-button color="warn">წაშლა</button>
+		</div>
+		<mat-divider></mat-divider>
+	</div>
+
+	<div style="text-align: center; margin-bottom: 15px">
+		<button mat-button color="primary" (click)="add()">შეკითხვის დამატება</button>
+	</div>
+	<mat-divider></mat-divider>
+	<div style="text-align: center; margin-block: 15px">
+		<button mat-raised-button color="primary" (click)="addQuiz()" [disabled]="form.invalid">
+			ქვიზის {{ !isEditMode ? "დამატება" : "რედაქტირება" }}
+		</button>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>👤 {{ review.user.firstName }} {{ review.user.lastName }}</h1>
+<mat-dialog-content>
+	<app-stars [stars]="review.star"></app-stars>
+	<p>{{ review.description }}</p>
+	<p>📆 {{ review.date | date }}</p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+	<button (click)="close()" mat-raised-button color="primary">დახურვა</button>
+</mat-dialog-actions>

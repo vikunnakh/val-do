@@ -1,0 +1,31 @@
+<div class="container">
+	<ng-container *ngIf="categories$ | async as categories" role="list">
+		<div *ngFor="let category of categories" class="list">
+			<div class="d-flex align-items-center" style="gap: 0 15px">
+				<!-- <img src="{{ baseUrl }}/{{ category.img }}" alt="" /> -->
+				<img src="" alt="" />
+
+				{{ category.title }}
+			</div>
+			<div class="d-flex" style="gap: 0 5px">
+				<button
+					mat-raised-button
+					color="primary"
+					[matBadge]="category.isFavorite ? '⭐️' : null"
+					matBadgeColor="warn"
+					matBadgePosition="before"
+					(click)="dialog('edit', category._id)">
+					შეცვლა
+				</button>
+				<button mat-raised-button color="warn" (click)="delete(category._id)">წაშლა</button>
+			</div>
+		</div>
+	</ng-container>
+	<button
+		mat-raised-button
+		color="primary"
+		(click)="dialog('add')"
+		style="display: block; margin-inline: auto; margin-block: 15px">
+		ახალი კატეგორიის დამატება
+	</button>
+</div>

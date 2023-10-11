@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="table-container" *ngIf="$users | async as users">
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>სახელი</th>
+					<th>გვარი</th>
+					<th>ელფოსტა</th>
+					<th>ტელეფონი</th>
+					<th>ადმინისტრატორი</th>
+					<th>ვერიფიცირებული</th>
+					<th>ვერიფიკაციის კოდი</th>
+					<th>რეგისტრაციის თარიღი</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let user of users; let i = index">
+					<td>#{{ i + 1 }}</td>
+					<td>{{ user.firstName }}</td>
+					<td>{{ user.lastName }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.phone }}</td>
+					<td>{{ user.isAdmin }}</td>
+					<td>{{ user.isVerify }}</td>
+					<td>{{ user.verificationCode }}</td>
+					<td>{{ user.registrationDate | date }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+

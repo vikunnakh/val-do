@@ -1,0 +1,36 @@
+a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+	&:active {
+		background: rgba(0, 0, 0, 0.04);
+	}
+	h3 {
+		margin-top: 0;
+		font-size: 16px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	p {
+		margin-bottom: 0;
+		font-size: 14px;
+		height: 42px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.img-container {
+		position: relative;
+	}
+	.level-badge {
+		position: absolute;
+		left: 15px;
+		bottom: 15px;
+	}
+}
+.cover {
+	display: block;
+	// width: 100%;
+	aspect-ratio: 16/9;
+	background-color: black;
+	object-fit: cover;
+}

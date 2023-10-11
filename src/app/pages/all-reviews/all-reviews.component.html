@@ -1,0 +1,8 @@
+<div class="container">
+	<h1>ყველა შეფასება</h1>
+	<div class="d-grid">
+		<ng-container *ngFor="let review of reviews$ | async">
+			<app-review-card (update)="reInit($event)" [review]="review"></app-review-card>
+		</ng-container>
+	</div>
+</div>

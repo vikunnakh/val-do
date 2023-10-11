@@ -1,0 +1,29 @@
+<div *ngIf="isNotification" class="review-notifications">
+    <span>
+        გამოიწერე
+        <strong>YouTube</strong>
+        - ის არხი
+    </span>
+    <a href="https://www.youtube.com/@val-do" mat-raised-button color="warn">
+        <span class="mat-button-wrapper" style="display: flex">
+            <img rel="nofollow" src="assets/icons/white-youtube.svg" width="20px" style="margin-right: 5px;">
+            გამოწერა
+        </span>
+    </a>
+</div>
+<header class="d-flex align-items-center ">
+    <div class="container d-flex align-items-center justify-content-between">
+        <nav class=" d-flex justify-content-center align-items-center">
+            <a routerLink="/" class="nav-logo d-flex">
+                <img src="assets/icons/logo-primary.svg" width="80px" height="30px" alt="Val Do's Logo">
+            </a>
+            <a mat-button class="nav-item" routerLinkActive="active" routerLink="/categories" href="categories">კურსები</a>
+            <a mat-button class="nav-item" routerLinkActive="active" routerLink="/resume" href="resume">რეზიუმეები</a>
+            <a mat-button class="nav-item" routerLinkActive="active" routerLink="/quiz-list" href="quiz-list">ქვიზები</a>
+            <a mat-button class="nav-item" routerLinkActive="active" routerLink="/challenge" href="challenge">გამოწვევები</a>
+            <a mat-button class="nav-item" routerLinkActive="active" routerLink="/blog/list" href="blog">ბლოგი</a>
+            <!-- <a mat-button class="nav-item" routerLinkActive="active" routerLink="/converters" href="converters">კონვერტერები</a> -->
+        </nav>
+        <app-user-dropdown></app-user-dropdown>
+    </div>
+</header>

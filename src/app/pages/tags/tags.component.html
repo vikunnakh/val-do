@@ -1,0 +1,12 @@
+<div *ngIf="courses$ | async as courses" class="container">
+    <h1>
+        კურსები<code>#{{ route.snapshot.queryParams['tagName'] }}</code>
+    </h1>
+    <p>
+        ქვემოთ ნაჩვენებია პროგრამირების კურსები, რომლებიც ემთხვევა თეგს სახელად
+        <code>#{{ route.snapshot.queryParams['tagName'] }}</code>
+    </p>
+    <div class="d-grid">
+        <app-lesson-card *ngFor="let course of courses" [data]="course"></app-lesson-card>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<a routerLink="/categories/{{ data._id }}">
+	<mat-card>
+		<img mat-card-image src="{{ baseUrl }}/{{ data.img }}" [alt]="data.title" />
+		<h3>{{ data.title }}</h3>
+		<p>{{ data.metaDescr }}</p>
+	</mat-card>
+</a>

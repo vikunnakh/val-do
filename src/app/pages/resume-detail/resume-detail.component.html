@@ -1,0 +1,89 @@
+<div class="container">
+	<ng-container *ngIf="cv$ | async as cv">
+		<div class="main-container">
+			<div>
+				<div class="left-block">
+					<img
+						*ngIf="cv.user.profileImage"
+						class="profile-image"
+						width="100%"
+						src="{{ baseUrl }}/{{ cv.user.profileImage }}"
+						alt="profile image" />
+					<h4>{{ cv.user.firstName }} {{ cv.user.lastName }}</h4>
+					<div class="info">
+						<mat-card>
+							<ul>
+								<li>
+									<a href="tel:{{ cv.user.phone }}">
+										<img src="assets/icons/phone-solid.svg" width="15px" alt="phone icon" />
+										<span>{{ cv.user.phone }}</span>
+									</a>
+								</li>
+								<mat-divider inset></mat-divider>
+								<li>
+									<a href="mailto:{{ cv.user.email }}">
+										<img src="assets/icons/envelope-solid.svg" width="15px" alt="phone icon" />
+										<span class="word-wrap">{{ cv.user.email }}</span>
+									</a>
+								</li>
+								<mat-divider inset></mat-divider>
+								<li>
+									<img src="assets/icons/location-dot-solid.svg" width="13px" alt="phone icon" />
+									<span>{{ cv.location }}, {{ cv.address }}</span>
+								</li>
+							</ul>
+						</mat-card>
+					</div>
+				</div>
+			</div>
+			<div class="detail-block">
+				<h1>{{ cv.role }}</h1>
+				<!-- ჩემს შესახებ -->
+				<mat-card>
+					<h3>ჩემს შესახებ</h3>
+					<mat-divider inset></mat-divider>
+					<p style="margin-top: 15px">{{ cv.about }}</p>
+				</mat-card>
+				<!-- განათლება -->
+				<mat-card>
+					<h3>განათლება / სერტიფიკატები</h3>
+					<mat-divider inset></mat-divider>
+					<div *ngFor="let el of cv.education; let i = index">
+						<h4>{{ el.title }}</h4>
+						<p style="color: #ccc; font-size: 14px">{{ el.startDate | date }} - {{ el.endDate | date }}</p>
+						<p>{{ el.descr }}</p>
+						<mat-divider inset *ngIf="i + 1 != cv.experience.length"></mat-divider>
+					</div>
+				</mat-card>
+				<!-- გამოცდილება -->
+				<mat-card>
+					<h3>გამოცდილება</h3>
+					<mat-divider inset></mat-divider>
+					<div *ngFor="let experience of cv.experience; let i = index">
+						<h4>{{ experience.title }}</h4>
+						<p style="color: #ccc; font-size: 14px">
+							{{ experience.startDate | date }} -
+							{{ experience.endDate | date }}
+						</p>
+						<p>{{ experience.descr }}</p>
+						<mat-divider inset *ngIf="i + 1 != cv.experience.length"></mat-divider>
+					</div>
+				</mat-card>
+				<!-- უნარები -->
+				<mat-card>
+					<h3>უნარები</h3>
+					<mat-chip-list style="padding-block: 15px">
+						<mat-chip color="primary" *ngFor="let skill of cv.skills">{{ skill.title }}</mat-chip>
+					</mat-chip-list>
+				</mat-card>
+				<!-- სასაუბრო ენები -->
+				<mat-card>
+					<h3>სასაუბრო ენები</h3>
+					<mat-chip-list style="padding-block: 15px">
+						<mat-chip color="primary" *ngFor="let lang of cv.languages">{{ lang.title }}</mat-chip>
+					</mat-chip-list>
+				</mat-card>
+			</div>
+		</div>
+	</ng-container>
+</div>

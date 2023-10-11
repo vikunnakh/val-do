@@ -1,0 +1,63 @@
+<div class="container p-relative">
+	<div [formGroup]="form" class="form-container">
+		<h1>კურსის დამატება</h1>
+		<p>
+			კურის დასამატებლად გთხოვთ შეავსოთ ქვემოთ მოცემული სავალდებულო ველები, რომლებიც მონიშნულია
+			<strong>*</strong>-ით
+		</p>
+		<div class="form-group">
+			<label for="">თეგები</label>
+			<ng-select
+				[items]="$tags | async"
+				[multiple]="true"
+				[closeOnSelect]="false"
+				bindLabel="title"
+				formControlName="tags"
+				placeholder="თეგების არჩევა">
+			</ng-select>
+		</div>
+		<div class="form-group">
+			<label for="">კატეგორია</label>
+			<ng-select
+				[items]="categories$ | async"
+				bindValue="_id"
+				bindLabel="title"
+				formControlName="category"
+				placeholder="თეგების არჩევა">
+			</ng-select>
+		</div>
+		<div class="form-group">
+			<label for="title">სათაური*</label>
+			<input id="title" type="text" formControlName="title" />
+		</div>
+		<div class="form-group">
+			<label for="descr">აღწერა*</label>
+            <input  type="text" formControlName="descr" />
+
+		</div>
+		<div class="form-group">
+			<label for="iframe">iframe</label>
+			<input id="iframe" type="text" formControlName="iframe" />
+		</div>
+		<div class="form-group">
+			<label for="youtubeLink">Youtube-ის ბმული</label>
+			<input id="youtubeLink" type="text" formControlName="youtubeLink" />
+		</div>
+		<div class="form-group">
+			<label for="telegramLink">Telegram-ის ბმული</label>
+			<input id="telegramLink" type="text" formControlName="telegramLink" />
+		</div>
+		<div class="form-group">
+			<label for="repoLink">Github-ის ბმული</label>
+			<input id="repoLink" type="text" formControlName="repoLink" />
+		</div>
+		<div class="form-group">
+			<label for="img">ფოტო</label>
+			<button (click)="file.click()" class="btn btn-primary">ფოტოს არჩევა</button>
+			<input #file style="display: none" class="img" type="file" (change)="onFileSelect($event)" />
+		</div>
+		<button [disabled]="form.invalid || !selectedImage" (click)="addCourse()" class="btn btn-primary w-100">
+			დამატება
+		</button>
+	</div>
+</div>

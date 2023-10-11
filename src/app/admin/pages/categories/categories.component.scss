@@ -1,0 +1,27 @@
+@import '../../../../styles/var/breakpoints';
+
+.list {
+	display: grid;
+	width: 100%;
+	padding-block: 10px;
+	border-bottom: 1px solid #ccc;
+	grid-template-columns: 1fr;
+	justify-content: flex-start;
+	gap: 10px 0;
+	@media screen and (min-width: $mobile) {
+		gap: initial;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	}
+	img {
+		width: 100px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+	}
+	& > div:last-child {
+		align-items: center;
+		justify-content: start;
+		@media screen and (min-width: $mobile) {
+			justify-content: end;
+		}
+	}
+}

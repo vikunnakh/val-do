@@ -1,0 +1,13 @@
+<div class="container d-flex" fitToScreen>
+    <mat-card class="form-container p-relative">
+        <h1>პაროლი აღდგენა</h1>
+        <p>პაროლის აღსადგენად გთხოვთ შეიყვანოთ აქტიური ელ-ფოსტა</p>
+        <mat-form-field appearance="outline">
+            <mat-label for="email">ელ-ფოსტა</mat-label>
+            <input matInput id="email" [formControl]="email" class="form-control" type="email" [readonly]="success">
+        </mat-form-field>
+        <div *ngIf="success" class="alert success">{{successMessage}}</div>
+        <div *ngIf="error" class="alert error">{{ errorMessage }}</div>
+        <button mat-raised-button color="primary" [disabled]="success || email.invalid" (click)="reset()">გაგზავნა</button>
+    </mat-card>
+</div>

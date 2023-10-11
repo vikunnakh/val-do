@@ -1,0 +1,48 @@
+@import "colors";
+
+header {
+	position: relative;
+	height: 50px;
+	background-color: $accent;
+	.nav-logo {
+		padding-right: 5px;
+	}
+	a {
+		color: $primary;
+		&.active {
+			font-weight: 700;
+		}
+	}
+	.nav-item {
+		display: none;
+		@media screen and (min-width: 992px) {
+			display: flex;
+		}
+	}
+}
+
+.review-notifications {
+	gap: 0 15px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	background-color: $primary;
+	color: white;
+}
+
+.notification {
+	gap: 0 15px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	background-color: $accent;
+	color: $primary;
+}
+
+nav {
+	gap: 20px;
+}

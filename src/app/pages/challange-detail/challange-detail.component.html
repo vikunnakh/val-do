@@ -1,0 +1,28 @@
+<div *ngIf="challange$ | async as challange" class="container">
+	<img class="d-block cover" src="{{ baseUrl }}/{{ challange.img }}" [alt]="challange.title" />
+	<div *ngIf="loginService.isAdmin()" class="d-flex admin-buttons">
+		<a
+			class="btn btn-primary"
+			[queryParams]="{
+				id: challange._id,
+				edit: true
+			}"
+			routerLink="/admin/challenge"
+			>რედაქტირება</a
+		>
+		<button (click)="delete()" class="btn btn-outline-danger">წაშლა</button>
+	</div>
+	<div class="d-flex justify-content-between">
+		<div class="d-flex badges-container">
+			<div *ngFor="let tag of challange.tags" class="badge">
+				{{ tag.title }}
+			</div>
+		</div>
+		<div>
+			<mat-chip color="primary" selected>{{ challange.level }}</mat-chip>
+		</div>
+	</div>
+	<h1>{{ challange.title }}</h1>
+	<div [innerHtml]="challange.descr"></div>
+	<app-json-ld [data]="jsonLd"></app-json-ld>
+</div>

@@ -1,0 +1,14 @@
+<mat-form-field style="width: 100%" appearance="outline">
+	<mat-label>ძიება</mat-label>
+	<input
+		type="text"
+		placeholder="ჩაწერე საძიებო სიტყვა"
+		matInput
+		[formControl]="searchControl"
+		[matAutocomplete]="auto" />
+	<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+		<mat-option *ngFor="let item of filteredOptions$ | async" [value]="item.title">
+			<a class="search-link" style="display: block" routerLink="/lessons/{{ item._id }}">{{ item.title }}</a>
+		</mat-option>
+	</mat-autocomplete>
+</mat-form-field>

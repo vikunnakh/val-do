@@ -1,0 +1,16 @@
+@import "breakpoints";
+
+.d-grid {
+	grid-gap: 15px;
+	padding-block: 30px;
+	grid-template-columns: minmax(0, 1fr);
+	@media screen and (min-width: $mobile) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	@media screen and (min-width: $tablet) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	@media screen and (min-width: $laptop) {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}

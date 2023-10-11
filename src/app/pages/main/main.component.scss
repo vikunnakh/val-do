@@ -1,0 +1,172 @@
+@import "../../../styles/var/colors";
+
+.welcome-section {
+	background-color: $primary;
+	min-height: 200px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
+	padding: 30px 15px;
+	h1 {
+		margin: 0;
+		margin-bottom: 15px;
+	}
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+.courses-section,
+.blogs-section {
+	padding: 30px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px 0;
+	.cards {
+		display: grid;
+		gap: 15px;
+		@media screen and (min-width: 768px) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+}
+
+.user-block {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 15px;
+	@media screen and (min-width: 768px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.user {
+		display: grid;
+		gap: 0 10px;
+		grid-template-columns: 64px minmax(0, 1fr);
+		border-bottom: 1px solid #0057b70a;
+		padding-bottom: 10px;
+		@media screen and (min-width: 768px) {
+			padding-bottom: initial;
+			border: initial;
+		}
+		img {
+			width: 100%;
+			display: block;
+		}
+		h6 {
+			margin-block: 5px;
+			font-size: 16px;
+		}
+		.purchase-info {
+			font-size: 14px;
+		}
+		.note {
+			margin-top: 10px;
+			grid-column: 1/3;
+			border: 1px solid #e8e8e8;
+			background-color: #f5f8fc;
+			border-radius: 8px;
+			font-size: 14px;
+			text-align: initial;
+			padding: 10px 15px;
+			position: relative;
+			&::before {
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				border: 1px solid #e8e8e8;
+				content: "";
+				left: 23px;
+				top: -6px;
+				background: #f5f8fc;
+				transform: rotate(45deg);
+				border-bottom: 0;
+				border-right: 0;
+			}
+		}
+	}
+}
+
+.you-will-learn {
+	a {
+		text-decoration: none;
+		color: $primary;
+		font-weight: 700;
+	}
+	.cards {
+		gap: 15px;
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		@media screen and (min-width: 768px) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+		& > div {
+			position: relative;
+			border-radius: 15px;
+			background-color: white;
+			padding: 15px;
+			p {
+				font-size: 16px;
+			}
+		}
+		img {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 50px;
+		}
+	}
+}
+
+.you-will-learn {
+	padding: 30px 0;
+	background-color: #edf4ff;
+}
+
+.title-area {
+	text-align: center;
+	p {
+		margin-bottom: 30px;
+	}
+}
+
+.sponsors {
+	margin-top: 15px;
+	background-color: rgb(237, 244, 255);
+	padding: 30px 15px 60px;
+	.main-container {
+		gap: 15px;
+		flex-wrap: wrap;
+	}
+	a {
+		gap: 0 5px;
+		color: black;
+		text-decoration: none;
+	}
+}
+
+.load-more-container {
+	padding-top: 15px;
+	gap: 0 5px;
+}
+
+.reviews-section {
+	.review-button-container {
+		display: flex;
+		align-items: center;
+		gap: 15px 0;
+		flex-direction: column;
+		justify-content: center;
+	}
+	margin-bottom: 15px;
+}
+
+.youtube-section {
+	padding-block: 15px;
+}

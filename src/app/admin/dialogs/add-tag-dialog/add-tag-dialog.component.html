@@ -1,0 +1,10 @@
+<h3>ახალი თეგის დამატება</h3>
+<p style="margin: 0;">ჩაწერე სასურველი თეგი და დააკლიკე ღილაკს დამატება</p>
+<div class="form-group">
+    <label for="tag">თეგი</label>
+    <input type="text" id="tag" [formControl]="tag">
+</div>
+<div class="d-flex" style="gap: 5px">
+    <button (click)="addTag()" class="btn btn-primary" [disabled]="tag.invalid">დამატება</button>
+    <button (click)="close()" class="btn btn-outline-danger">გაუქმება</button>
+</div>

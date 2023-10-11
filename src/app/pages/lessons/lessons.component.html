@@ -1,0 +1,23 @@
+<div class="container">
+	<!-- search -->
+	<app-search-bar></app-search-bar>
+	<div class="sorting-block d-flex align-items-center justify-content-between">
+		<div>ფილტრები</div>
+		<div class="sorting-container">
+			<button mat-button [matMenuTriggerFor]="menu">
+				<img width="10px" src="/assets/icons/sort.svg" alt="" />
+				<span style="margin-left: 5px">სორტირება</span>
+			</button>
+			<mat-menu #menu="matMenu">
+				<a routerLink="/categories/{{ id }}" [queryParams]="{ date: '-1' }" mat-menu-item>თარიღი: ახალი</a>
+				<a routerLink="/categories/{{ id }}" [queryParams]="{ date: '1' }" mat-menu-item>თარიღი: ძველი</a>
+			</mat-menu>
+		</div>
+	</div>
+	<ng-container *ngIf="courses$ | async as courses">
+		<div class="d-grid">
+			<app-lesson-card *ngFor="let course of courses" [data]="course"></app-lesson-card>
+		</div>
+		<div *ngIf="!courses.length" style="text-align: center">კურსები არ მოიძებნა 🙁</div> 
+	</ng-container>
+</div>

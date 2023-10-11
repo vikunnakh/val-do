@@ -1,0 +1,18 @@
+<mat-card (click)="expand()">
+	<mat-card-title>
+		<app-stars [stars]="review.star"></app-stars>
+	</mat-card-title>
+	<mat-card-content>
+		<h4>👤 {{ review.user.firstName }} {{ review.user.lastName }}</h4>
+		<mat-divider></mat-divider>
+		<p>{{ shortDescr }}</p>
+		<div class="date">📆 {{ review.date | date }}</div>
+	</mat-card-content>
+	<ng-container *ngIf="edit">
+		<mat-divider></mat-divider>
+		<mat-card-actions>
+			<button (click)="change()" mat-raised-button color="accent">შეცვლა</button>
+			<button *ngIf="!loginService.isAdmin()" mat-raised-button color="warn"></button>
+		</mat-card-actions>
+	</ng-container>
+</mat-card>

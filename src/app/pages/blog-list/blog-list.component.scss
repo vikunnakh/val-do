@@ -1,0 +1,21 @@
+img {
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	display: block;
+	background-color: black;
+}
+
+a {
+	text-decoration: none;
+}
+
+h6 {
+	margin: 0;
+	height: 48px;
+	overflow: hidden;
+}
+
+::ng-deep #blog-card-text {
+	height: 40px;
+	overflow: hidden;
+}

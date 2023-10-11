@@ -1,0 +1,34 @@
+<div [formGroup]="form">
+	<h1 mat-dialog-title>შეკითხვის დამატება</h1>
+	<mat-dialog-content>
+		<p>შეკითხვის აღწერა, რომელიც უნდა იყოს გასაგებად დაწერილი</p>
+		<div class="form-group">
+            <input type="text" formControlName="question">
+		</div>
+		<ng-container *ngFor="let answer of $any(answers.controls); index as i">
+			<ng-container formArrayName="answers">
+				<h6>პასუხი #{{ i + 1 }}</h6>
+				<div [formGroupName]="i" class="question">
+					<div>
+						<mat-radio-button [checked]="answer.controls['isCorrect'].value" (change)="isTrue(i)"></mat-radio-button>
+						<!-- <input [checked]="answer.controls['isCorrect'].value" (change)="isTrue(i)" type="radio" name="isCorrect"> -->
+					</div>
+                    <input type="text" formControlName="answer">
+					<div>
+						<button mat-button color="warn" matTooltip="პასუხის წაშლა" matTooltipPosition="above" (click)="delete(i)">
+							წაშლა
+						</button>
+					</div>
+				</div>
+			</ng-container>
+		</ng-container>
+
+		<div style="text-align: center">
+			<button mat-button color="primary" (click)="add()">სავარაუდო პასუხის დამატება</button>
+		</div>
+	</mat-dialog-content>
+	<mat-divider style="margin-top: 15px"></mat-divider>
+	<mat-dialog-actions align="end">
+		<button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">შეკითხვის დამატება</button>
+	</mat-dialog-actions>
+</div>

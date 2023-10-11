@@ -1,0 +1,45 @@
+<div class="user-dropdown">
+	<button color="primary" mat-raised-button class="menu-title d-flex align-items-center" [matMenuTriggerFor]="menu">
+		მენიუ 🍔
+	</button>
+	<mat-menu #menu="matMenu" xPosition="before">
+		<ng-container *ngIf="loginService.isAdmin()">
+			<!-- admin -->
+			<mat-divider></mat-divider>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/add">კურსის დამატება</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/quiz">ქვიზის დამატება</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/challenge">გამოწვევის დამატება</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/blog">ბლოგის დამატება</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/users">მომხმარებლები</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/tags">თეგების მართვა</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/categories">კატეგორიების მართვა</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/admin/reviews">შეფასებები</a>
+			<mat-divider></mat-divider>
+		</ng-container>
+		<!-- profile links -->
+		<ng-container *ngIf="loginService.isLogged()">
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/profile">👤 პროფილი</a>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/favorites">⭐️ ფავორიტები</a>
+			<mat-divider></mat-divider>
+		</ng-container>
+
+		<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/categories">📕 კურსები</a>
+		<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/resume">👥 რეზიუმეები</a>
+		<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/quiz-list">🏅 ქვიზები</a>
+		<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/challenge">📣 გამოწვევები</a>
+		<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/blog/list">📚 ბლოგი</a>
+		<a mat-menu-item target="_blank" href="https://www.buymeacoffee.com/valdo?ref=widget-1895798">☕️ დონაცია</a>
+
+		<!-- login link -->
+		<ng-container *ngIf="!loginService.isLogged()">
+			<mat-divider></mat-divider>
+			<a mat-menu-item routerLinkActive="font-weight-bold" routerLink="/auth">➡️ შესვლა</a>
+		</ng-container>
+
+		<!-- if user is logged in -->
+		<ng-container *ngIf="loginService.isLogged()">
+			<mat-divider></mat-divider>
+			<a mat-menu-item class="cursor-pointer" (click)="loginService.logout()">⬅️ გასვლა</a>
+		</ng-container>
+	</mat-menu>
+</div>

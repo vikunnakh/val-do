@@ -1,0 +1,7 @@
+<a routerLink="/lessons/{{data._id}}">
+    <mat-card>
+        <img mat-card-image loading="lazy" src="{{ baseUrl }}/{{ data.img }}" [alt]="data.title">
+        <h3>{{ data.title }}</h3>
+        <div class="descr" [innerHTML]="data.descr.substring(0, 100)"></div>
+    </mat-card>
+</a>

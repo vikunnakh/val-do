@@ -1,0 +1,117 @@
+<ng-container *ngIf="data$ | async as data">
+	<section class="welcome-section">
+		<div class="container">
+			<h1>პროგრამირების კურსები ქართულად</h1>
+			<p>
+				მოგესალმებით, მე ვარ <strong>Val Do</strong>, ჩემი მიზანია წვლილი შევიტანო პროგრამირებით დაინტერესებული
+				ადამიანების სწავლასა და განვითარებაში, ჩემი პროგრამირების კურსებით, უფასოდ შეძლებთ პირველი ნაბიჯების გადადგმას
+				ვებდეველოპმენტში
+			</p>
+			<!-- search bar -->
+		</div>
+	</section>
+	<section class="courses-section">
+		<div class="container">
+			<div class="title-area">
+				<h2>ტოპ პროგრამირების კურსები</h2>
+				<p>
+					მოცემული პროგრამირების კურსებით მარტივად შეძლებ შენი პირველი ნაბიჯების გადადგმას ვებ დეველოპმენტსა და
+					პროგრამირებაში, ქვემოთ მოცემულია საიტზე არსებული ტოპ 3 პროგრამირების კურსი, რომელიც შენთვის გახდება
+					გზამკვლევლი პრგრამისტის კარიერაში
+				</p>
+			</div>
+			<div class="cards">
+				<a *ngFor="let category of data.categories" routerLink="/categories/{{ category._id }}">
+					<app-category-card [data]="category"></app-category-card>
+				</a>
+			</div>
+			<div style="margin-top: 15px" class="d-flex justify-content-center">
+				<a title="პროგრამირების ყველა კურსის ნახვა" routerLink="/categories" mat-raised-button>ყველა კურსი</a>
+			</div>
+		</div>
+	</section>
+	<section class="blogs-section">
+		<div class="container">
+			<div class="title-area">
+				<h2>ბლოგები უფასო პროგრამირების გაკვეთილების შესახებ</h2>
+				<p>val-do.com-ზე ასევე შეგიძლიათ იხილოთ სტატიები და უფასო პროგრამირების გაკვეთილების ან ბლოგების სახით</p>
+			</div>
+			<div class="cards">
+				<a *ngFor="let blog of data.blogs" routerLink="/blog/blog-detail/{{ blog._id }}">
+					<app-blog-card [blog]="blog"></app-blog-card>
+				</a>
+			</div>
+		</div>
+		<a mat-raised-button routerLink="/blog/list">ყველა ბლოგი</a>
+	</section>
+	<div class="you-will-learn">
+		<div class="container">
+			<div class="title-area">
+				<h2>ვებგვერდზე შეისწავლი პროგრამირების შემდეგ ენებს</h2>
+				<p>
+					ვებგვერდზე შეისწავლი ბაზარზე არსებულ ყველაზე მოთხოვნად ტექნოლოგიებს და პროგრამირების ენებს, ისეთებს
+					როგორებიცაა
+					<a href="https://val-do.com/categories/62012294045b728393d6c5d8">HTML, CSS </a>
+					<a href="https://val-do.com/categories/620135ec045b728393d6c614">JavaScript</a>
+					და კიდევ სხვა ტექნოლოგიებს
+				</p>
+			</div>
+			<div class="cards">
+				<div>
+					<img src="/assets/icons/html5-brands.svg" alt="html5 logo" />
+					<h4>HTML, CSS, SASS</h4>
+					<p>მოცემული ტექნოლოგიებით ისწავლი საიტის მარქაფის გაკეთებას და სტატიკური საიტების აწყობას</p>
+				</div>
+				<div>
+					<img src="/assets/icons/js-brands.svg" alt="JavaScript logo" />
+					<h4>JavaScript</h4>
+					<p>ისწავლი ჯავასკრიპტის საფუძვლებს და ააწყობ დინამიურ საიტებს, კომპლექსური ფუნქციონალით</p>
+				</div>
+				<div>
+					<img src="/assets/icons/typescript.svg" alt="typescript logo" />
+					<h4>TypeScript</h4>
+					<p>შეისწავლი ტაიპსკრიპტს და მის საფუძვლებს, რომელიც უკვე ყველა თანამედროვე framework-ში გამოიყენება</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- reviews section -->
+	<section class="reviews-section">
+		<div class="container">
+			<div class="title-area">
+				<h2 id="reviews">მომხმარებლის შეფასებები</h2>
+			</div>
+			<div class="d-grid">
+				<ng-container *ngFor="let review of data.reviews">
+					<app-review-card [review]="review"></app-review-card>
+				</ng-container>
+			</div>
+			<div class="review-button-container">
+				<a mat-button routerLink="/reviews">ყველა შეფასება</a>
+				<button (click)="addReview()" mat-raised-button color="primary">შეფასების დაწერა</button>
+			</div>
+		</div>
+	</section>
+
+	<div class="sponsors">
+		<div class="title-area">
+			<h2>⭐️ ვებ-გვერდის სპონსორები</h2>
+			<p>არხის მხარდამჭერი საიტები, რომლებსაც წვლილი შეაქვთ ჩვენი საიტის განვითარებაში</p>
+		</div>
+		<div class="d-flex justify-content-center main-container">
+			<a target="_blank" href="https://servisebi.ge" class="d-flex align-items-center justify-content-center">
+				<img width="30px" height="30px" src="/assets/icons/servisebi-ge.svg" alt="servisebi.ge's logo" />
+				<b>სერვისები.ჯი</b>
+			</a>
+			<a target="_blank" href="https://shop.servisebi.ge" class="d-flex align-items-center justify-content-center">
+				<img width="30px" height="30px" src="/assets/icons/shop.servisebi-ge.svg" alt="shop servisebi.ge's logo" />
+				<b>სერვისები მაღაზია</b>
+			</a>
+			<a target="_blank" href="https://servisebi.kz" class="d-flex align-items-center justify-content-center">
+				<img width="30px" height="30px" src="/assets/icons/servisebi-kz.svg" alt="servisebi.kz's logo" />
+				<b>сервисеби.кз</b>
+			</a>
+		</div>
+	</div>
+</ng-container>

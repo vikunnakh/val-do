@@ -1,0 +1,3 @@
+<div *ngIf="challenges$ | async as challenges" class="container d-grid" fitToScreen>
+	<app-challange-card *ngFor="let challenge of challenges" [challenge]="challenge"></app-challange-card>
+</div>

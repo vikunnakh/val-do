@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-card>
+        <h3>ხარ დეველოპერი?</h3>
+        <p>დაამატე შენი resume val-do.com-ზე</p>
+        <a routerLink="/profile" [queryParams]="{ 'add-resume' : true }" mat-raised-button color="primary">რეზიუმეს დამატება</a>
+    </mat-card>
+</div>
+    <div class="container grid">
+        <a routerLink="/resume/{{ cv._id }} " *ngFor="let cv of data$ | async">
+            <mat-card>
+                <mat-card-title>{{ cv.role }}</mat-card-title>
+                <mat-card-subtitle>{{ cv.user.firstName }} {{ cv.user.firstName }}</mat-card-subtitle>
+                <mat-card-content>
+                    <p class="descr">{{ cv.about.substr(0, 100) }}...</p>
+                    <div class="chip-list">
+                        <mat-chip-list style="padding-block: 15px">
+                        <mat-chip color="primary" *ngFor="let skill of cv.skills">{{ skill.title }}</mat-chip>
+                    </mat-chip-list>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="location">
+                        <img src="../../../assets/icons/location-dot-solid.svg" width="10px" alt="">
+                        {{cv.location}}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </a>
+    </div>

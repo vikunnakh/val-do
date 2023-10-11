@@ -1,0 +1,8 @@
+<ng-container *ngIf="loader$ | async as loader">
+	<app-loading></app-loading>
+</ng-container>
+<app-header></app-header>
+<div #shell class="shell">
+	<router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

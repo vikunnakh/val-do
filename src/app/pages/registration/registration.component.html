@@ -1,0 +1,39 @@
+<div class="container d-flex">
+    <mat-card class="form-container p-relative" [formGroup]="form">
+        <h1>რეგისტრაცია</h1>
+        <p>რეგისტრაციისთვის გთხოვთ შეავსოთ ქვემოთ მოცემული ფორმა</p>
+        <div class="form-grid">
+            <mat-form-field appearance="outline">
+                <mat-label for="firstname">სახელი</mat-label>
+                <input matInput id="firstname" formControlName="firstName" class="form-control" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label for="lastname">გვარი</mat-label>
+                <input matInput id="lastname" formControlName="lastName" class="form-control" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label for="email">ელ-ფოსტა</mat-label>
+                <input matInput id="email" formControlName="email" class="form-control" type="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label for="phone">ტელეფონი</mat-label>
+                <input matInput id="phone" formControlName="phone" class="form-control" type="tel" placeholder="ნომერი ჩაწერეთ +995-ის გარეშე"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label for="password">პაროლი</mat-label>
+                <input matInput id="password" formControlName="password" class="form-control"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label for="password">გაიმეორე პაროლი</mat-label>
+                <input matInput formControlName="rePassword" class="form-control" type="password"/>
+            </mat-form-field>
+        </div>
+        <div class="form-group" *ngIf="error">
+            <div class="alert error">{{errorMessage}}</div>
+        </div>
+        <button mat-raised-button (click)="registration()"  color="primary"[disabled]="form.invalid" class="w-100">რეგისტრაცია</button>
+        <div class="d-flex justify-content-center align-items-center register">
+            გაქვს ანგარიში? <a routerLink="/auth" mat-button>სისტემაში შესვლა</a>
+        </div>
+    </mat-card>
+</div>

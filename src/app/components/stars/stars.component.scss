@@ -1,0 +1,15 @@
+@import "../../../styles/var/colors";
+
+.stars-conatiner {
+    display: flex;
+    gap: 0 5px;
+    & > div {
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background-color: #ccc;
+        &.active {
+            background: $accent;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+<div class="container">
+	<ng-container *ngIf="$tags | async as tags">
+		<mat-list role="list">
+			<mat-list-item *ngFor="let tag of tags" role="listitem">
+				<div class="list-item-container">
+					<div class="d-flex align-items-center">
+						<span class="title d-flex align-items-center" style="gap: 10px">
+							<img src="../../../../assets/icons/tag.svg" width="15px" alt="tag" />
+							{{ tag.title }}
+						</span>
+					</div>
+					<div class="d-flex" style="gap: 5px">
+						<button (click)="editTag(tag._id, tag.title)" class="btn btn-primary">შეცვლა</button>
+						<button (click)="deleteTags(tag._id)" class="btn btn-outline-danger">წაშლა</button>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+			</mat-list-item>
+		</mat-list>
+		<button class="btn btn-primary" (click)="addTag()" style="margin-inline: auto; margin-block: 15px">
+			თეგის დამატება
+		</button>
+	</ng-container>
+</div>
+

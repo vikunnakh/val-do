@@ -1,0 +1,37 @@
+@import "breakpoints";
+@import "colors";
+
+footer {
+	background-color: $primary;
+	padding-block: 30px;
+	.container a {
+		width: calc(50% - 8px);
+	}
+	@media screen and (min-width: $mobile) {
+		min-height: 100px;
+		.container a {
+			width: initial;
+		}
+	}
+	.version {
+		margin-top: 10px;
+		display: block;
+		text-align: center;
+		color: white;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+		gap: 5px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	h6 {
+		margin: 0;
+		font-size: 18px;
+		text-align: center;
+		margin-bottom: 15px;
+		color: white;
+	}
+}

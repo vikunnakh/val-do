@@ -1,0 +1,105 @@
+<div style="padding-bottom: 30px" class="container line-numbers">
+	<ng-container *ngIf="course$ | async as course">
+		<div>
+			<div class="iframe-container">
+				<iframe
+					*ngIf="course.youtubeLink"
+					width="100%"
+					style="aspect-ratio: 16/9; background-color: black"
+					[src]="'https://www.youtube.com/embed/' + course.youtubeLink | safe : 'resourceUrl'"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen>
+				</iframe>
+				<img
+					width="100%"
+					style="aspect-ratio: 16/9"
+					*ngIf="!course.youtubeLink"
+					src="{{ baseUrl }}/{{ course.img }}"
+					[alt]="course.title" />
+			</div>
+			<app-is-admin [id]="course._id" style="display: block; margin-bottom: 15px" *ngIf="user.isAdmin"></app-is-admin>
+			<h1>{{ course.title }}</h1>
+			<!-- add to favorites -->
+			<div style="margin-bottom: 30px">
+				<button mat-raised-button color="primary" *ngIf="isFavorite" (click)="addToFavorites()" style="gap: 5px">
+					ფავორიტებში დამატება
+				</button>
+				<button mat-raised-button color="warn" *ngIf="!isFavorite" (click)="deleteFromFavs()" style="gap: 5px">
+					ფავორიტებიდან წაშლა
+				</button>
+			</div>
+			<div id="edited" [innerHtml]="course.descr | safe : 'html'"></div>
+			<!-- <iframe
+				*ngIf="course.iframe"
+				width="100%"
+				style="aspect-ratio: 16/9; background: black"
+				[src]="course.iframe | safe : 'resourceUrl'"
+				frameborder="0"></iframe> -->
+			<!-- tags -->
+			<div class="tags">
+				<h3>კურსში შემავალი თემები</h3>
+				<div class="d-flex flex-wrap" style="column-gap: 15px">
+					<a
+						*ngFor="let tag of course.tags"
+						rel="nofollow"
+						routerLink="/tag/{{ tag._id }}"
+						[queryParams]="{ tagName: tag.title }"
+						class="d-flex"
+						style="gap: 5px">
+						<img src="/assets/icons/tag.svg" width="15px" alt="tag" />
+						{{ tag.title }}
+					</a>
+				</div>
+			</div>
+			<!-- resourses -->
+			<div *ngIf="course.telegramLink || course.repoLink" class="resourses">
+				<h3>დამატებითი რესურსები</h3>
+				<a class="d-flex" rel="nofollow" [href]="course.repoLink" target="_blank">
+					<img src="/assets/icons/github.svg" width="20px" height="20px" alt="" />
+					<span>გითჰაბის რეპოზიტორი</span>
+				</a>
+				<a class="d-flex align-items-center" rel="nofollow" target="_blank" href="https://discord.gg/pE87egReRx">
+					<img src="/assets/icons/discord.svg" width="20px" height="20px" alt="" />
+					<span>დისქორდი</span>
+				</a>
+				<a class="d-flex align-items-center" rel="nofollow" target="_blank" [href]="course.telegramLink">
+					<img src="/assets/icons/telegram.svg" width="20px" height="20px" alt="" />
+					<span>ტელეგრამის ჯგუფი</span>
+				</a>
+			</div>
+			<!-- comments -->
+			<section class="comments">
+				<h2>კომენტარები {{ comments.length }}</h2>
+				<button [disabled]="commentText.invalid || loader" mat-raised-button color="primary" (click)="addComment()">
+					კომენტარის დამატება
+				</button>
+				<div *ngFor="let comment of comments; let i = index" class="comment">
+					<h6>{{ comment.firstName }} {{ comment.lastName }}</h6>
+					<div class="date">
+						{{ comment.date | date : "dd/MM/y, hh:mm:ss" }}
+					</div>
+					<div [innerHtml]="comment.comment | safe : 'html'"></div>
+					<button
+						mat-raised-button
+						color="warn"
+						*ngIf="comment.userId == user._id"
+						(click)="deleteComment(comment._id || '', i)">
+						კომენტარის წაშლა
+					</button>
+				</div>
+			</section>
+		</div>
+		<div class="other-corses">
+			<div>
+				<ng-container *ngFor="let item of course.all">
+					<a routerLink="/lessons/{{ item._id }}" routerLinkActive="active">
+						<img lazy src="{{ baseUrl }}/{{ item.img }}" alt="" />
+						{{ item.title }}
+					</a>
+				</ng-container>
+			</div>
+		</div>
+	</ng-container>
+</div>

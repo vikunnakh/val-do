@@ -1,0 +1,17 @@
+<div class="container d-flex">
+	<div class="form-container">
+		<h1>ვერიფიკაცია</h1>
+		<p>
+			ელფოსტაზე <strong>{{ email }}</strong> გამოგზავნილია ვერიფიკაციის <strong>6 ნიშნა კოდი</strong>, გასააქტიურებლად
+			გთხოვთ შეავსოთ ქვემოთ მოცემული ველი
+		</p>
+		<div class="form-group">
+			<label for="email">6 ნიშნა კოდი</label>
+			<input id="email" [formControl]="code" class="form-control" type="tel" maxlength="6" minlength="6"/>
+		</div>
+		<div *ngIf="error" class="form-group">
+			<div class="alert error">ვერიფიკაციის კოდი არასწორია</div>
+		</div>
+		<button [disabled]="code.invalid" (click)="verify()" class="btn btn-primary w-100">ვერიფიკაცია</button>
+	</div>
+</div>
